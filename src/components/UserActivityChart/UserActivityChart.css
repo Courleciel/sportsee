@@ -1,0 +1,52 @@
+.chart-container {
+  background-color: #fbfbfb;
+  padding: 16px;
+  border-radius: 5px;
+  width: 66%;
+  margin-bottom: 20px;
+}
+
+.chart-title {
+  margin: 1rem;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.chart-container {
+  .recharts-legend-wrapper {
+    top: -33px !important;
+  }
+  .recharts-legend-item {
+    margin-right: 30px !important;
+  }
+  .recharts-legend-item-text {
+    font-size: 14px;
+    color: rgb(116, 121, 140) !important;
+  }
+  .recharts-default-legend .recharts-legend-item svg {
+    margin-right: 10px !important;
+  }
+  .recharts-text {
+    font-size: 14px;
+  }
+}
+
+.custom-legend-label {
+  font-size: 14px;
+  color: #666;
+}
+
+.activity-chart-custom-tooltip {
+  background-color: #ff0101 !important;
+  padding: 5px;
+  color: white !important;
+  font-size: 14px;
+}
+
+.tooltip-label {
+  font-weight: bold;
+}
+
+.tooltip-value {
+  padding: 5px;
+}

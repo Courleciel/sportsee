@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.app {
+  display: flex;
+}
+
+.main-content {
+  margin-left: 60px;
+  margin-top: 60px;
+  padding: 20px;
+  flex-grow: 1;
+}
