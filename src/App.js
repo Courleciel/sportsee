@@ -6,6 +6,7 @@ import UserDetails from './components/UserDetails/UserDetails';
 import UserActivityChart from './components/UserActivityChart/UserActivityChart';
 import UserAverageSessionsChart from './components/UserAverageSessionsChart/UserAverageSessionsChart';
 import UserPerformanceChart from './components/UserPerformanceChart/UserPerformanceChart';
+import UserTodayScoreChart from './components/UserTodayScoreChart/UserTodayScoreChart';
 import './App.css';
 
 const App = () => {
@@ -33,6 +34,7 @@ const UserDetailsWrapper = () => {
       <div className="charts-container">
       <UserAverageSessionsChart userId={id} />
       <UserPerformanceChart userId={id} />
+      <UserTodayScoreChart userId={id} />
       </div>
     </div>
   );

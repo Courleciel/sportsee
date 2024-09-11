@@ -1,6 +1,7 @@
 .average-session-chart-container {
   background-color: #ff0000;
   border-radius: 10px;
+  width: 30%;
 }
 
 .custom-tooltip {
