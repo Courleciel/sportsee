@@ -138,3 +138,50 @@ export const useFetchUserAverageSessions = (userId) => {
 
   return { averageSessions, loading, error };
 };
+
+export const fetchUserPerformance = async (userId) => {
+  try {
+    const response = await fetch(`http://localhost:3000/user/${userId}/performance`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Erreur lors de la récupération des données de performance de l'utilisateur:", error);
+    throw error;
+  }
+};
+
+export const useFetchUserPerformance = (userId) => {
+  const [performanceData, setPerformanceData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const getUserPerformanceData = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const data = await fetchUserPerformance(userId);
+        const kindMap = data.data.kind;
+        const transformedData = data.data.data.map((item) => ({
+          ...item,
+          kind: kindMap[item.kind],
+        }));
+        setPerformanceData(transformedData);
+      } catch (error) {
+        setError("Erreur lors de la récupération des données de performance de l'utilisateur");
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (userId) {
+      getUserPerformanceData();
+    }
+  }, [userId]);
+
+  return { performanceData, loading, error };
+};

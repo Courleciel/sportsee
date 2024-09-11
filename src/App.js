@@ -5,6 +5,7 @@ import VerticalNavbar from './components/VerticalNavbar';
 import UserDetails from './components/UserDetails/UserDetails';
 import UserActivityChart from './components/UserActivityChart/UserActivityChart';
 import UserAverageSessionsChart from './components/UserAverageSessionsChart/UserAverageSessionsChart';
+import UserPerformanceChart from './components/UserPerformanceChart/UserPerformanceChart';
 import './App.css';
 
 const App = () => {
@@ -29,7 +30,10 @@ const UserDetailsWrapper = () => {
     <div>
       <UserDetails userId={id} />
       <UserActivityChart userId={id} />
+      <div className="charts-container">
       <UserAverageSessionsChart userId={id} />
+      <UserPerformanceChart userId={id} />
+      </div>
     </div>
   );
 };
