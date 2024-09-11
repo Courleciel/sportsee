@@ -45,7 +45,7 @@ const UserAverageSessionsChart = ({ userId }) => {
 
   return (
     <div className="average-session-chart-container">
-      <ResponsiveContainer width="100%" height={300}>
+      <ResponsiveContainer width="100%" height={250}>
       <p className="average-sessions-duration_title">
           Durée moyenne des <br />
           sessions

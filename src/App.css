@@ -19,10 +19,17 @@ body {
   justify-content: space-between;
   align-items: flex-start;
   gap: 20px;
-  margin: 20px;
 }
 
-.average-session-chart-container,
-.performance-chart-container {
-  flex: 1;
+.user-informations {
+  display: flex;
+  gap: 20px;
+}
+
+.charts {
+  width: 66%;
+}
+
+.key-data {
+  width: 100%;
 }

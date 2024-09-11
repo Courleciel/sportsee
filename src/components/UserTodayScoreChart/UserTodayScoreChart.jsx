@@ -19,7 +19,7 @@ const UserTodayScoreChart = ({ userId }) => {
 
   return (
     <div className="radial-chart-container">
-      <ResponsiveContainer width="100%" height={300}>
+      <ResponsiveContainer width="100%" height={250}>
         <div className="radial-chart-title">Score</div>
         <RadialBarChart
           width={373}

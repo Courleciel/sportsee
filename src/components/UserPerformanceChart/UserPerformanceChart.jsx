@@ -20,10 +20,10 @@ const UserPerformanceChart = ({ userId }) => {
 
   return (
     <div className="performance-chart-container">
-      <ResponsiveContainer width="100%" height={300}>
-        <RadarChart data={performanceData}>
+      <ResponsiveContainer width="100%" height={250}>
+        <RadarChart data={performanceData} margin={{ right: 40, left: 40 }}>
           <PolarGrid radialLines={false} />
-          <PolarAngleAxis dataKey="kind" stroke="#ffffff" tick={{ fill: "white", fontSize: 15 }} tickLine={false} />
+          <PolarAngleAxis dataKey="kind" stroke="#ffffff" tick={{ fill: "white", fontSize: 11 }} tickLine={false} />
           <Tooltip />
           <Radar name="Performance" dataKey="value" stroke="#ff0101" fill="#ff0101" fillOpacity={0.6} />
         </RadarChart>

@@ -7,6 +7,7 @@ import UserActivityChart from './components/UserActivityChart/UserActivityChart'
 import UserAverageSessionsChart from './components/UserAverageSessionsChart/UserAverageSessionsChart';
 import UserPerformanceChart from './components/UserPerformanceChart/UserPerformanceChart';
 import UserTodayScoreChart from './components/UserTodayScoreChart/UserTodayScoreChart';
+import UserKeyData from './components/UserKeyData/UserKeyData';
 import './App.css';
 
 const App = () => {
@@ -30,11 +31,16 @@ const UserDetailsWrapper = () => {
   return (
     <div>
       <UserDetails userId={id} />
-      <UserActivityChart userId={id} />
-      <div className="charts-container">
-      <UserAverageSessionsChart userId={id} />
-      <UserPerformanceChart userId={id} />
-      <UserTodayScoreChart userId={id} />
+      <div className='user-informations'>
+        <div className="charts">
+          <UserActivityChart userId={id} />
+          <div className="charts-container">
+          <UserAverageSessionsChart userId={id} />
+          <UserPerformanceChart userId={id} />
+          <UserTodayScoreChart userId={id} />
+          </div>
+        </div>
+        <UserKeyData userId={id} />
       </div>
     </div>
   );
