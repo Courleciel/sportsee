@@ -1,0 +1,40 @@
+.key-data-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  width: 33%;
+  margin: auto;
+  gap: 90px;
+}
+
+.key-data-item {
+  display: flex;
+  background-color: #fbfbfb;
+  align-items: center;
+  padding: 20px;
+  width: 80%;
+}
+
+.key-data-icon {
+  width: 48px;
+  height: 48px;
+  margin-right: 10px;
+}
+
+.key-data-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.key-data-item h3 {
+  font-size: 16px;
+  color: #333;
+  margin: 0;
+}
+
+.key-data-item p {
+  font-size: 16px;
+  color: #666;
+  margin: 0;
+}

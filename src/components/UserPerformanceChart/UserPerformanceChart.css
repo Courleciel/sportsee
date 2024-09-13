@@ -1,0 +1,10 @@
+.performance-chart-container {
+  background-color: #282d30;
+  border-radius: 10px;
+  color: #ffffff;
+  text-align: center;
+  width: 33%;
+  .recharts-text {
+    transform: scaleY(1.05) translateY(-6px);
+  }
+}

@@ -1,0 +1,39 @@
+.radial-chart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  background-color: #fbfbfb;
+  border-radius: 10px;
+  width: 33%;
+}
+
+.radial-chart-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.radial-chart-text {
+  font-size: 16px;
+  text-align: center;
+  margin: 0;
+}
+
+.radial-chart-score {
+  font-weight: bold;
+  font-size: 35px;
+  margin: 0;
+}
+
+.radial-chart-label {
+  font-size: 15px;
+  margin: 0;
+  line-height: 1.4rem;
+  text-align: center;
+  fill: #787d90;
+  font-weight: 700
+}
