@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+## Documentation
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### 1. `fetchUserData(userId)`
 
-## Available Scripts
+**Description** : Récupère les données de l'utilisateur à partir de l'API backend.
 
-In the project directory, you can run:
+- **Paramètres** :
+  - `userId` (string) : L'identifiant de l'utilisateur pour lequel récupérer les données.
+- **Retourne** :
+  - `Promise<Object>` : Une promesse qui résout les données de l'utilisateur.
+- **Lève** :
+  - Une erreur si la récupération échoue.
 
-### `npm start`
+### 2. `useFetchUserData(userId)`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Description** : Hook React pour récupérer et gérer l'état des données de l'utilisateur.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Paramètres** :
+  - `userId` (string) : L'identifiant de l'utilisateur pour lequel récupérer les données.
+- **Retourne** :
+  - `user` (Object | null) : Les données de l'utilisateur.
+  - `loading` (boolean) : Indicateur de chargement.
+  - `error` (string | null) : Erreur lors de la récupération des données.
 
-### `npm test`
+### 3. `fetchUserActivityData(userId)`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Description** : Récupère les données d'activité de l'utilisateur à partir de l'API backend.
 
-### `npm run build`
+- **Paramètres** :
+  - `userId` (string) : L'identifiant de l'utilisateur.
+- **Retourne** :
+  - `Promise<Object>` : Une promesse qui résout les données d'activité de l'utilisateur.
+- **Lève** :
+  - Une erreur si la récupération échoue.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 4. `useFetchUserActivityData(userId)`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Description** : Hook React pour récupérer et gérer l'état des données d'activité de l'utilisateur.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Paramètres** :
+  - `userId` (string) : L'identifiant de l'utilisateur.
+- **Retourne** :
+  - `activityData` (Array) : Les données d'activité transformées de l'utilisateur.
+  - `loading` (boolean) : Indicateur de chargement.
+  - `error` (string | null) : Erreur lors de la récupération des données.
 
-### `npm run eject`
+### 5. `fetchUserAverageSessions(userId)`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Description** : Récupère les données des sessions moyennes de l'utilisateur à partir de l'API backend.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Paramètres** :
+  - `userId` (string) : L'identifiant de l'utilisateur.
+- **Retourne** :
+  - `Promise<Object>` : Une promesse qui résout les données des sessions moyennes.
+- **Lève** :
+  - Une erreur si la récupération échoue.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 6. `useFetchUserAverageSessions(userId)`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+**Description** : Hook React pour récupérer et gérer l'état des données des sessions moyennes de l'utilisateur.
 
-## Learn More
+- **Paramètres** :
+  - `userId` (string) : L'identifiant de l'utilisateur.
+- **Retourne** :
+  - `averageSessions` (Array) : Les données des sessions moyennes transformées.
+  - `loading` (boolean) : Indicateur de chargement.
+  - `error` (string | null) : Erreur lors de la récupération des données.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 7. `fetchUserPerformance(userId)`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Description** : Récupère les données de performance de l'utilisateur à partir de l'API backend.
 
-### Code Splitting
+- **Paramètres** :
+  - `userId` (string) : L'identifiant de l'utilisateur.
+- **Retourne** :
+  - `Promise<Object>` : Une promesse qui résout les données de performance.
+- **Lève** :
+  - Une erreur si la récupération échoue.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 8. `useFetchUserPerformance(userId)`
 
-### Analyzing the Bundle Size
+**Description** : Hook React pour récupérer et gérer l'état des données de performance de l'utilisateur.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Paramètres** :
+  - `userId` (string) : L'identifiant de l'utilisateur.
+- **Retourne** :
+  - `performanceData` (Array) : Les données de performance transformées.
+  - `loading` (boolean) : Indicateur de chargement.
+  - `error` (string | null) : Erreur lors de la récupération des données.
