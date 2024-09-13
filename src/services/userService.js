@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import UserDataModel from './UserDataModel';
 
 export const fetchUserData = async (userId) => {
   try {
@@ -67,10 +68,8 @@ export const useFetchUserActivityData = (userId) => {
       setError(null);
       try {
         const data = await fetchUserActivityData(userId);
-        const transformedData = data.data.sessions.map((session, index) => ({
-          ...session,
-          day: index + 1
-        }));
+        const userDataModel = new UserDataModel(data.data);
+        const transformedData = userDataModel.transformActivityData();
         setActivityData(transformedData);
       } catch (error) {
         setError("Erreur lors de la récupération des données d'activité de l'utilisateur");
@@ -102,11 +101,6 @@ export const fetchUserAverageSessions = async (userId) => {
   }
 };
 
-const getDayName = (dayNumber) => {
-  const days = ["L", "M", "M", "J", "V", "S", "D"];
-  return days[dayNumber - 1];
-};
-
 export const useFetchUserAverageSessions = (userId) => {
   const [averageSessions, setAverageSessions] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -118,10 +112,8 @@ export const useFetchUserAverageSessions = (userId) => {
       setError(null);
       try {
         const data = await fetchUserAverageSessions(userId);
-        const transformedData = data.data.sessions.map(session => ({
-          ...session,
-          day: getDayName(session.day),
-        }));
+        const userDataModel = new UserDataModel(data.data);
+        const transformedData = userDataModel.transformAverageSessions();
         setAverageSessions(transformedData);
       } catch (error) {
         setError("Erreur lors de la récupération des données de sessions moyennes de l'utilisateur");
@@ -158,29 +150,14 @@ export const useFetchUserPerformance = (userId) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const translateKindToFrench = (kind) => {
-    const kindTranslations = {
-      cardio: 'Cardio',
-      energy: 'Énergie',
-      endurance: 'Endurance',
-      strength: 'Force',
-      speed: 'Vitesse',
-      intensity: 'Intensité'
-    };
-    return kindTranslations[kind] || kind; // Fallback to the original kind if translation not found
-  };
-
   useEffect(() => {
     const getUserPerformanceData = async () => {
       setLoading(true);
       setError(null);
       try {
         const data = await fetchUserPerformance(userId);
-        const kindMap = data.data.kind;
-        const transformedData = data.data.data.map((item) => ({
-          ...item,
-          kind: translateKindToFrench(kindMap[item.kind]),
-        }));
+        const userDataModel = new UserDataModel(data.data);
+        const transformedData = userDataModel.transformPerformanceData();
         setPerformanceData(transformedData);
       } catch (error) {
         setError("Erreur lors de la récupération des données de performance de l'utilisateur");
@@ -197,4 +174,3 @@ export const useFetchUserPerformance = (userId) => {
 
   return { performanceData, loading, error };
 };
-
