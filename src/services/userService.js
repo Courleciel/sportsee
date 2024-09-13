@@ -158,6 +158,18 @@ export const useFetchUserPerformance = (userId) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const translateKindToFrench = (kind) => {
+    const kindTranslations = {
+      cardio: 'Cardio',
+      energy: 'Énergie',
+      endurance: 'Endurance',
+      strength: 'Force',
+      speed: 'Vitesse',
+      intensity: 'Intensité'
+    };
+    return kindTranslations[kind] || kind; // Fallback to the original kind if translation not found
+  };
+
   useEffect(() => {
     const getUserPerformanceData = async () => {
       setLoading(true);
@@ -167,7 +179,7 @@ export const useFetchUserPerformance = (userId) => {
         const kindMap = data.data.kind;
         const transformedData = data.data.data.map((item) => ({
           ...item,
-          kind: kindMap[item.kind],
+          kind: translateKindToFrench(kindMap[item.kind]),
         }));
         setPerformanceData(transformedData);
       } catch (error) {
@@ -185,3 +197,4 @@ export const useFetchUserPerformance = (userId) => {
 
   return { performanceData, loading, error };
 };
+
