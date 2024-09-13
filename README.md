@@ -83,7 +83,7 @@
 
 - **Paramètres** :
   - `userId` (string) : L'identifiant de l'utilisateur.
-- **Retourne** :z
+- **Retourne** :
   - `performanceData` (Array) : Les données de performance transformées.
   - `loading` (boolean) : Indicateur de chargement.
   - `error` (string | null) : Erreur lors de la récupération des données.
