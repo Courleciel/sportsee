@@ -20,6 +20,16 @@ const getMockedActivityData = (userId, dataSet) => {
   return { data: userActivity ? { sessions: userActivity.sessions } : { sessions: [] } };
 };
 
+const getMockedAverageSessions = (userId, dataSet) => {
+  const userAverageSessions = dataSet.find(user => user.userId === Number(userId));
+  return { data: userAverageSessions };
+};
+
+const getMockedPerformanceData = (userId, dataSet) => {
+  const userPerformance = dataSet.find(user => user.userId === Number(userId));
+  return { data: userPerformance };
+};
+
 export const fetchUserData = async (userId) => {
   if (USE_MOCK_DATA) {
     return getMockedData(userId, USER_MAIN_DATA);
@@ -115,16 +125,20 @@ export const useFetchUserActivityData = (userId) => {
 };
 
 export const fetchUserAverageSessions = async (userId) => {
-  try {
-    const response = await fetch(`http://localhost:3000/user/${userId}/average-sessions`);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+  if (USE_MOCK_DATA) {
+    return getMockedAverageSessions(userId, USER_AVERAGE_SESSIONS);
+  } else {
+    try {
+      const response = await fetch(`http://localhost:3000/user/${userId}/average-sessions`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("Erreur lors de la récupération des données de sessions moyennes de l'utilisateur:", error);
+      throw error;
     }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Erreur lors de la récupération des données de sessions moyennes de l'utilisateur:", error);
-    throw error;
   }
 };
 
@@ -159,16 +173,20 @@ export const useFetchUserAverageSessions = (userId) => {
 };
 
 export const fetchUserPerformance = async (userId) => {
-  try {
-    const response = await fetch(`http://localhost:3000/user/${userId}/performance`);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+  if (USE_MOCK_DATA) {
+    return getMockedPerformanceData(userId, USER_PERFORMANCE);
+  } else {
+    try {
+      const response = await fetch(`http://localhost:3000/user/${userId}/performance`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("Erreur lors de la récupération des données de performance de l'utilisateur:", error);
+      throw error;
     }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Erreur lors de la récupération des données de performance de l'utilisateur:", error);
-    throw error;
   }
 };
 
