@@ -1,17 +1,40 @@
 import { useState, useEffect } from 'react';
 import UserDataModel from './UserDataModel';
 
+import {
+  USER_MAIN_DATA,
+  USER_ACTIVITY,
+  USER_AVERAGE_SESSIONS,
+  USER_PERFORMANCE
+} from '../assets/data/mockedData';
+
+const USE_MOCK_DATA = true;
+
+const getMockedData = (userId, dataSet) => {
+  const userData = dataSet.find(user => user.id === Number(userId));
+  return { data: userData };
+};
+
+const getMockedActivityData = (userId, dataSet) => {
+  const userActivity = dataSet.find(user => user.userId === Number(userId));
+  return { data: userActivity ? { sessions: userActivity.sessions } : { sessions: [] } };
+};
+
 export const fetchUserData = async (userId) => {
-  try {
-    const response = await fetch(`http://localhost:3000/user/${userId}`);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+  if (USE_MOCK_DATA) {
+    return getMockedData(userId, USER_MAIN_DATA);
+  } else {
+    try {
+      const response = await fetch(`http://localhost:3000/user/${userId}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("Erreur lors de la récupération des données de l'utilisateur:", error);
+      throw error;
     }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Erreur lors de la récupération des données de l'utilisateur:", error);
-    throw error;
   }
 };
 
@@ -44,16 +67,20 @@ export const useFetchUserData = (userId) => {
 };
 
 export const fetchUserActivityData = async (userId) => {
-  try {
-    const response = await fetch(`http://localhost:3000/user/${userId}/activity`);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+  if (USE_MOCK_DATA) {
+    return getMockedActivityData(userId, USER_ACTIVITY);
+  } else {
+    try {
+      const response = await fetch(`http://localhost:3000/user/${userId}/activity`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("Erreur lors de la récupération des données d'activité de l'utilisateur:", error);
+      throw error;
     }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Erreur lors de la récupération des données d'activité de l'utilisateur:", error);
-    throw error;
   }
 };
 
